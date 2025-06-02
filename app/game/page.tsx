@@ -1,15 +1,10 @@
-import LandingPage from "./_components/LandingPage";
+import React from 'react';
+import Game from './_components/Game';
 
-
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+const GamePage: React.FC = () => {
   return (
-    <>
-      
-      <div className="space-y-8">
-        <LandingPage />
-       
-      </div>
-      <main className="p-4">{children}</main>
-    </>
+    <Game />
   );
-}
+};
+
+export default GamePage;
