@@ -1,21 +1,19 @@
-'use client';
-import { usePathname } from "next/navigation";
-import Header from "./game/_components/Header";
+import type { Metadata } from "next";
+import "./globals.css";
 
 
-export default function LayoutDashboard ({children
+
+export default function RootLayout({
+  children,
 }: Readonly<{
   children: React.ReactNode;
-  locations : React.ReactNode;
 }>) {
-    const path = usePathname();
-    return (
-        <div className="bg-orange-50">
-            <Header/>
-            <div className=" flex flex-row items-center">
-            {children}
-            {path === "/game"}
-            </div>
-        </div>
-    )
+  return (
+    <html lang="en">
+      <body>
+  
+        {children}
+      </body>
+    </html>
+  );
 }
