@@ -1,10 +1,11 @@
+import React from 'react';
+import Game from './game/_components/Game';
+import LandingPage from './game/_components/LandingPage';
 
+const GamePage: React.FC = () => {
+  return (
+    <LandingPage />
+  );
+};
 
-export default function Home() {
-return (
-  <div className="px-10 font-extrabold text-justify">
-    Hola Cinerex
-  </div>
-)
-
-}
+export default GamePage;

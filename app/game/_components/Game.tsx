@@ -126,15 +126,43 @@ const Game: React.FC = () => {
   }, [score, level, timer, isRunning, bestTimes, foundPairs, cards]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-blue-200 to-purple-200 font-sans">
-      <h1 className="text-5xl font-bold mb-8 text-gray-800">Memory Game</h1>
-      <div className="flex space-x-4 mb-8">
-        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition duration-300" onClick={() => startGame()}>Level 3</button>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-300 via-blue-100 to-yellow-200 font-mario relative overflow-hidden">
+      {/* Nubes decorativas */}
+      <div className="absolute top-8 left-8 w-32 h-16 bg-white rounded-full opacity-60 blur-sm"></div>
+      <div className="absolute top-20 right-16 w-24 h-10 bg-white rounded-full opacity-50 blur-sm"></div>
+      {/* Suelo estilo Mario */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-yellow-700 to-yellow-400 flex items-end z-0">
+        <div className="w-full h-8 bg-yellow-600 opacity-80"></div>
       </div>
-      <div className="text-2xl mb-4 text-gray-700">Score: {score}</div>
-      <div className="text-2xl mb-4 text-gray-700">Moves: {moves}</div>
-      <div className="text-2xl mb-4 text-gray-700">Time: {timer} seconds</div>
-      <div className={`grid grid-cols-6 gap-4`}>
+      <h1 className="text-6xl font-extrabold mb-10 text-yellow-500 drop-shadow-lg z-10 tracking-widest">
+        Memorama AIRA
+      </h1>
+      {/* Panel de datos */}
+      <div className="flex flex-row items-center justify-center gap-8 mb-8 z-10">
+        <div className="bg-white/80 rounded-2xl px-8 py-4 shadow-xl border-4 border-yellow-300 flex flex-col items-center min-w-[140px]">
+          <span className="text-lg font-bold text-yellow-700 mb-1">Puntuación</span>
+          <span className="text-3xl font-extrabold text-yellow-900">{score}</span>
+        </div>
+        <div className="bg-white/80 rounded-2xl px-8 py-4 shadow-xl border-4 border-blue-300 flex flex-col items-center min-w-[140px]">
+          <span className="text-lg font-bold text-blue-700 mb-1">Movimientos</span>
+          <span className="text-3xl font-extrabold text-blue-900">{moves}</span>
+        </div>
+        <div className="bg-white/80 rounded-2xl px-8 py-4 shadow-xl border-4 border-green-300 flex flex-col items-center min-w-[140px]">
+          <span className="text-lg font-bold text-green-700 mb-1">Tiempo</span>
+          <span className="text-3xl font-extrabold text-green-900">{timer} s</span>
+        </div>
+      </div>
+      {/* Botón de nivel */}
+      <div className="flex space-x-4 mb-8 z-10">
+        <button
+          className="bg-yellow-400 hover:bg-yellow-300 text-yellow-900 font-extrabold py-3 px-8 rounded-full shadow-lg border-2 border-yellow-600 text-xl transition-all duration-200"
+          onClick={() => startGame()}
+        >
+          Reiniciar Nivel
+        </button>
+      </div>
+      {/* Grid de cartas */}
+      <div className="grid grid-cols-6 gap-4 z-10">
         {cards.map((value, index) => {
           const pairIndex = Math.floor(value) - 1;
           const isFound = foundPairs[pairIndex];
